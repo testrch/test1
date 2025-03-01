@@ -1,0 +1,13 @@
+name: Vulnerable Workflow
+on: push
+jobs:
+  insecure_job:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write 
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Echo secrets
+        run: echo "to jest tajny sekret=${{ secrets.SEKRET }}"
